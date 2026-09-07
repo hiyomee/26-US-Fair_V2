@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LG Uplus 2026 US Fair</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4 pb-20">
+  <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+    
+    <!-- GNB / 상단 헤더 -->
+    <div class="flex justify-between items-center border-b pb-4 mb-4">
+      <h1 id="app-title" onclick="handleTitleClick()" class="text-xl font-bold text-pink-600 cursor-pointer select-none">
+        LG Uplus 2026 US Fair
+      </h1>
+      <button id="btn-back" onclick="navigateTo('page-main')" class="hidden text-xs bg-gray-200 text-gray-700 px-3 py-1.5 rounded font-bold hover:bg-gray-300">
+        ← 메인으로
+      </button>
+    </div>
+
+    <!-- ==================== [PAGE 0] 메인 페이지 ==================== -->
+    <div id="page-main" class="page-view space-y-4">
+      <div class="bg-pink-50 p-4 rounded-lg border border-pink-100">
+        <p id="main-user-welcome" class="text-sm font-bold text-pink-900">👋 안녕하세요! LG Uplus 2026 US Fair에 오신 것을 환영합니다.</p>
+        <p class="text-xs text-pink-600 mt-1">아래 메뉴를 선택하여 행사에 참여해 보세요.</p>
+      </div>
+
+      <!-- 🎬 유튜브 영상 영역 -->
+      <div id="welcome-video-section" class="p-4 bg-gray-900 rounded-xl shadow-md border border-gray-800 space-y-2">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xs font-bold text-white flex items-center gap-1.5">
+            🎬 LG Uplus 행사 소개 영상
+          </h3>
+          <span class="text-[10px] text-gray-400">오피셜 가이드</span>
+        </div>
+        
+        <div class="relative w-full pt-[56.25%] rounded-lg overflow-hidden bg-black shadow-inner">
+          <iframe 
+            id="welcome-youtube-iframe"
+            class="absolute top-0 left-0 w-full h-full border-0"
+            src="https://www.youtube-nocookie.com/embed/wURV5n2si2Q?rel=0&modestbranding=1" 
+            title="LG Uplus 2026 US Fair 다시보기" 
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- 메인 카드 버튼들 -->
+      <div class="grid grid-cols-2 gap-3 pt-2">
+        <!-- 1. 참석자 체크인 -->
+        <button id="card-checkin" onclick="navigateTo('page-checkin')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">✅</div>
+          <div class="font-bold text-sm">참석자 체크인</div>
+          <div id="main-status-checkin" class="text-xs">미체크인</div>
+        </button>
+
+        <!-- 2. 내 인터뷰 일정 -->
+        <button id="card-interview" onclick="navigateTo('page-interview')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">📅</div>
+          <div class="font-bold text-sm">내 인터뷰 일정</div>
+          <div id="main-status-interview" class="text-xs">일정 확인하기</div>
+        </button>
+
+        <!-- 3. 장소 안내 -->
+        <button id="card-direction" onclick="navigateTo('page-direction')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">🗺️</div>
+          <div class="font-bold text-sm">장소 안내</div>
+          <div id="main-status-direction" class="text-xs">유의사항 확인 대기</div>
+        </button>
+
+        <!-- 4. 시간표 -->
+        <button id="card-timetable" onclick="navigateTo('page-timetable')" class="p-4 border rounded-xl transition text-left space-y-1 bg-pink-50 border-pink-300 text-pink-700 hover:bg-pink-100">
+          <div class="text-2xl">🕒</div>
+          <div class="font-bold text-sm">2026 US Fair 시간표</div>
+          <div id="main-status-timetable" class="text-xs text-pink-600 font-semibold">타임테이블 확인</div>
+        </button>
+
+        <!-- 5. 현장미션 -->
+        <button id="card-mission" onclick="navigateTo('page-mission')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">🎯</div>
+          <div class="font-bold text-sm">현장 미션</div>
+          <div id="main-status-mission" class="text-xs">0 / 2 미션 완료</div>
+        </button>
+
+        <!-- 6. 실시간 Q&A -->
+        <button id="card-qna" onclick="navigateTo('page-qna')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">💬</div>
+          <div class="font-bold text-sm">실시간 Q&A</div>
+          <div id="main-status-qna" class="text-xs">질문 등록하기</div>
+        </button>
+
+        <!-- 7. 후기 설문조사 -->
+        <button id="card-survey" onclick="navigateTo('page-survey')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">📝</div>
+          <div class="font-bold text-sm">후기 설문조사</div>
+          <div id="main-status-survey" class="text-xs">만족도 조사 작성</div>
+        </button>
+
+        <!-- 8. After NW -->
+        <button id="card-networking" onclick="navigateTo('page-networking')" class="p-4 border rounded-xl transition text-left space-y-1">
+          <div class="text-2xl">🤝</div>
+          <div class="font-bold text-sm">After NW</div>
+          <div id="main-status-networking" class="text-xs">참석 여부 선택</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE 1] 체크인 페이지 ==================== -->
+    <div id="page-checkin" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">1. 참석자 체크인 및 좌석 안내</h2>
+      
+      <div id="checkin-container" class="space-y-3">
+        <p class="text-xs text-gray-500">체크인 후 지정된 좌석 정보를 확인하실 수 있습니다.</p>
+        <input type="text" id="checkin-name" class="border p-2.5 w-full rounded-lg text-sm" placeholder="성명 (예: 홍길동)">
+        <input type="text" id="checkin-birth" class="border p-2.5 w-full rounded-lg text-sm" placeholder="생년월일 6자리 (예: 980101)" maxlength="6">
+        <button onclick="handleCheckin()" class="w-full bg-pink-600 text-white p-3 rounded-lg text-sm font-bold hover:bg-pink-700">
+          명단 확인 및 체크인
+        </button>
+      </div>
+
+      <div id="checkin-status-area" class="hidden space-y-3">
+        <div id="checkin-status" class="text-sm p-4 bg-pink-50 border border-pink-200 text-pink-700 rounded-lg font-bold"></div>
+        
+        <div class="bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 p-5 rounded-xl text-center space-y-2 shadow-sm">
+          <p class="text-xs text-pink-600 font-bold">🎯 배정된 지정 좌석</p>
+          <div id="assigned-seat-number" class="text-3xl font-extrabold text-pink-900">-</div>
+          <p class="text-xs text-gray-500 pt-2 border-t border-pink-100">원활한 행사 진행을 위해 안내된 좌석에 착석해 주세요.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE - INTERVIEW] 내 인터뷰 일정 페이지 ==================== -->
+    <div id="page-interview" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">📅 내 인터뷰 일정</h2>
+      <div id="interview-content" class="space-y-3"></div>
+    </div>
+
+    <!-- ==================== [PAGE - DIRECTION] 장소 안내 페이지 ==================== -->
+    <div id="page-direction" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">🗺️ 장소 안내</h2>
+      <div class="space-y-3 text-sm text-gray-700">
+        
+        <div class="w-full h-48 rounded-xl overflow-hidden border shadow-inner">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.251432467713!2d-87.62423632351572!3d41.88744946482814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2ca924587447%3A0x880c1ae8574967ef!2z7ZWY7JaP7Yq4IOumrOygoOyLnCDsi5zsubTqs6A!5e0!3m2!1sko!2skr!4v1788140883587!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-xl border space-y-2">
+          <p class="font-bold text-pink-600 text-base">📍 장소 안내</p>
+          <p class="text-xs text-gray-600 leading-relaxed">
+            <b>장소:</b> Hyatt Regency Chicago (151 E Wacker Dr, Chicago, IL 60601) <br>
+            <b>체크인:</b> 15:00 <br> 
+            <b>체크아웃:</b> 12:00 <br> 
+          </p>
+        </div>
+        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-3">
+          <p class="font-bold text-xs text-amber-900">🏨 숙소 이용 안내</p>
+          <p class="text-xs text-amber-800 leading-relaxed">
+            숙소 체크인 시, 본인 성명 및 신분증 제출을 통해 직접 체크인 하시면 됩니다.<br>
+            <span class="text-red-600 font-semibold">※ 객실 내 Bar 이용시에는 별도 요금이 개별 청구되오니 유의 부탁드립니다.</span>
+          </p>
+          
+          <div class="pt-2 border-t border-amber-200">
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="checkbox" id="chk-notice-agree" onchange="toggleNoticeAgreement()" class="h-4 w-4 text-pink-600 rounded">
+              <span class="text-xs font-bold text-gray-800">위 유의사항을 모두 확인하였습니다.</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE 6] 2026 US Fair 시간표 페이지 ==================== -->
+    <div id="page-timetable" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">🕒 2026 US Fair 시간표</h2>
+      
+      <div class="bg-white p-4 rounded-xl border shadow-sm space-y-4">
+        <div class="overflow-x-auto border rounded-lg">
+          <table class="w-full text-xs text-left border-collapse">
+            <thead>
+              <tr class="bg-pink-50 text-pink-900 border-b">
+                <th class="p-2.5 font-bold border-r">시간</th>
+                <th class="p-2.5 font-bold">항목 / 내용</th>
+              </tr>
+            </thead>
+            <tbody id="timetable-tbody" class="divide-y text-gray-700">
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="p-4 bg-pink-50 border border-pink-200 rounded-xl text-center space-y-1">
+          <p class="text-xs font-extrabold text-pink-700">📍 전 세션 진행 장소: Plaza Ballroom in East Tower</p>
+          <p class="text-[11px] text-pink-600 font-medium">※ 별도의 드레스 코드는 없으며 개별 자율복장으로 참석 부탁드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE 2] 현장 미션 페이지 ==================== -->
+    <div id="page-mission" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">2. 현장 미션</h2>
+      
+      <div id="mission-status-banner" class="p-3 rounded-lg text-xs font-bold border"></div>
+
+      <div class="flex border-b text-sm font-bold">
+        <button id="subtab-btn-1" onclick="switchMissionSubTab('poster')" class="flex-1 py-2 text-center border-b-2 border-pink-600 text-pink-600">
+          미션 1. 기술 포스터
+        </button>
+        <button id="subtab-btn-2" onclick="switchMissionSubTab('subscribe')" class="flex-1 py-2 text-center border-b-2 border-transparent text-gray-400 hover:text-gray-600">
+          미션 2. 채널 구독
+        </button>
+      </div>
+
+      <div id="subtab-poster" class="space-y-3">
+        <p class="text-xs text-gray-500">5가지 기술 포스터 중 <b>4개 이상</b>의 정답 키워드를 맞춰주세요!</p>
+        <div id="poster-list" class="space-y-3 max-h-80 overflow-y-auto pr-1"></div>
+      </div>
+
+      <div id="subtab-subscribe" class="hidden space-y-4">
+        <p class="text-xs text-gray-500">LG유플러스 공식 채용 채널을 구독하고 소식을 받아보세요!</p>
+        
+        <div class="space-y-2">
+          <a href="https://www.youtube.com/@lguplus" target="_blank" class="flex items-center justify-between p-3 border rounded-lg bg-red-50 border-red-200 hover:bg-red-100 transition">
+            <span class="text-xs font-bold text-red-700">📺 LG유플러스 공식 유튜브</span>
+            <span class="text-xs bg-red-600 text-white px-2 py-1 rounded">구독하러 가기 ↗</span>
+          </a>
+
+          <a href="https://www.instagram.com/uplus_story" target="_blank" class="flex items-center justify-between p-3 border rounded-lg bg-pink-50 border-pink-200 hover:bg-pink-100 transition">
+            <span class="text-xs font-bold text-pink-700">📸 LG유플러스 인스타그램</span>
+            <span class="text-xs bg-pink-600 text-white px-2 py-1 rounded">팔로우하러 가기 ↗</span>
+          </a>
+        </div>
+
+        <div class="pt-2 border-t space-y-3">
+          <label class="flex items-center space-x-2 cursor-pointer bg-gray-50 p-3 rounded-lg border">
+            <input type="checkbox" id="chk-subscribe-agree" onchange="toggleSubscribeButton()" class="h-4 w-4 text-pink-600 rounded">
+            <span class="text-xs font-bold text-gray-700">채널 구독/팔로우를 완료했습니다.</span>
+          </label>
+
+          <button id="btn-complete-subscribe" onclick="completeSubscribeMission()" disabled class="w-full bg-gray-300 text-gray-500 p-3 rounded-lg text-sm font-bold cursor-not-allowed transition">
+            채널 구독 미션 인증하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE 3] 실시간 Q&A 페이지 ==================== -->
+    <div id="page-qna" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">3. 실시간 Q&A</h2>
+      <div class="flex gap-2">
+        <input type="text" id="qna-input" class="border p-2 flex-1 rounded text-sm" placeholder="질문을 입력하세요">
+        <button onclick="addQuestion()" class="bg-pink-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-pink-700">등록</button>
+      </div>
+      <ul id="qna-list" class="space-y-2 max-h-60 overflow-y-auto"></ul>
+    </div>
+
+    <!-- ==================== [PAGE 4] 설문조사 페이지 ==================== -->
+    <div id="page-survey" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">4. 후기 설문조사</h2>
+      <p class="text-xs text-gray-500">행사 참여 소감을 남겨주시면 큰 도움이 됩니다.</p>
+      
+      <div class="rounded-lg overflow-hidden border min-h-[450px]">
+        <div data-tf-live="01M18RXWEBK0CTE9NTWNXNBNEH"></div>
+      </div>
+
+      <div id="survey-action-area" class="pt-2">
+        <button id="btn-complete-survey" onclick="completeSurvey()" class="w-full bg-pink-600 text-white p-3 rounded-lg text-sm font-bold hover:bg-pink-700 transition">
+          설문 작성 완료
+        </button>
+      </div>
+      <div id="survey-status-box" class="hidden p-4 bg-pink-50 border border-pink-200 text-pink-700 rounded-lg text-sm font-bold text-center">
+        ✅ 설문조사 참여가 완료되었습니다. 감사합니다!
+      </div>
+    </div>
+
+    <!-- ==================== [PAGE 5] After NW 페이지 ==================== -->
+    <div id="page-networking" class="page-view hidden space-y-4">
+      <h2 class="text-lg font-bold text-gray-800 border-b pb-2">5. After NW</h2>
+      <p class="text-xs text-gray-500">After NW 참석 여부를 선택해 주세요.</p>
+      <div class="p-4 bg-gray-50 border rounded-lg space-y-3">
+        <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-gray-100">
+          <input type="radio" name="networking-choice" value="true" onchange="setNetworkingOption(true)" class="h-4 w-4 text-pink-600">
+          <span class="text-gray-800 font-bold text-sm">참석하겠습니다.</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-gray-100">
+          <input type="radio" name="networking-choice" value="false" onchange="setNetworkingOption(false)" class="h-4 w-4 text-pink-600">
+          <span class="text-gray-800 font-bold text-sm">참석하지 않겠습니다.</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- ==================== [ADMIN PAGE] 관리자 페이지 ==================== -->
+    <div id="page-admin" class="page-view hidden space-y-6">
+      <div class="bg-pink-900 text-white p-4 rounded-lg flex justify-between items-center">
+        <h2 class="text-md font-bold">⚙️ 관리자 대시보드</h2>
+        <button onclick="navigateTo('page-main')" class="text-xs bg-pink-700 px-2.5 py-1 rounded hover:bg-pink-600">나가기</button>
+      </div>
+
+      <section class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-gray-50 p-2.5 border rounded">등록 명단: <b id="admin-total-registered">0명</b></div>
+        <div class="bg-gray-50 p-2.5 border rounded">체크인 인원: <b id="admin-checkedin-count">0명</b></div>
+        <div class="bg-gray-50 p-2.5 border rounded col-span-2">🤝 After NW 현황: <b id="admin-networking-status" class="text-pink-600">참석 0명 / 미참석 0명</b></div>
+      </section>
+
+      <section class="border-t pt-4 space-y-2">
+        <h3 class="text-sm font-bold text-pink-600">🎁 미션+설문 완수자 기프트 추첨</h3>
+        <p class="text-xs text-gray-500">체크인 + 현장미션 2개 + 후기 설문조사를 모두 완료한 참석자를 추첨합니다.</p>
+        <button onclick="openRaffleModal()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white py-2.5 rounded-lg text-xs font-bold shadow hover:from-pink-600 hover:to-rose-600 transition flex items-center justify-center gap-1">
+          <span>✨ 당첨자 추첨하기</span>
+        </button>
+      </section>
+
+      <section class="border-t pt-4 space-y-2">
+        <h3 class="text-sm font-bold">👥 사전 참석자 DB 관리</h3>
+        
+        <div class="grid grid-cols-2 gap-2">
+          <input type="text" id="reg-name" placeholder="이름 (예: 홍길동)" class="border p-1.5 rounded text-xs">
+          <input type="text" id="reg-birth" placeholder="생년월일 6자리 (예: 980101)" maxlength="6" class="border p-1.5 rounded text-xs">
+          <input type="text" id="reg-affiliation" placeholder="소속 (예: 스탠포드대)" class="border p-1.5 rounded text-xs">
+          <input type="text" id="reg-job" placeholder="직무 (예: AI Researcher)" class="border p-1.5 rounded text-xs">
+          <input type="text" id="reg-seat" placeholder="좌석번호 (예: A-12)" class="border p-1.5 rounded text-xs">
+          <input type="text" id="reg-interview" placeholder="인터뷰 (예: 14:00 Room A)" class="border p-1.5 rounded text-xs">
+        </div>
+        <button onclick="registerAttendee()" class="w-full bg-pink-600 text-white py-1.5 rounded text-xs font-bold hover:bg-pink-700">신규 등록</button>
+
+        <div class="bg-gray-50 border p-2.5 rounded text-xs space-y-1 mt-2">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-gray-700">📁 CSV 일괄 등록</span>
+            <button onclick="downloadCSVSample()" class="text-pink-600 underline">양식 다운로드</button>
+          </div>
+          <input type="file" id="csv-file-input" accept=".csv" onchange="importCSVAttendees(event)" class="block w-full text-xs text-gray-500">
+        </div>
+
+        <div class="max-h-56 overflow-y-auto border rounded p-2 bg-gray-50">
+          <table class="w-full text-xs text-left">
+            <thead>
+              <tr class="border-b">
+                <th class="pb-1">이름</th>
+                <th class="pb-1">생년월일</th>
+                <th class="pb-1">소속/직무</th>
+                <th class="pb-1">좌석/일정</th>
+                <th class="pb-1 text-right">삭제</th>
+              </tr>
+            </thead>
+            <tbody id="admin-attendee-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="border-t pt-4">
+        <h3 class="text-sm font-bold mb-2">📥 데이터 내보내기 (CSV)</h3>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="exportCSV('attendees')" class="bg-emerald-600 text-white p-2 rounded text-xs font-bold hover:bg-emerald-700">참석자 명단</button>
+          <button onclick="exportCSV('qna')" class="bg-emerald-600 text-white p-2 rounded text-xs font-bold hover:bg-emerald-700">Q&A 목록</button>
+        </div>
+      </section>
+
+      <section class="border-t pt-4 space-y-2">
+        <h3 class="text-sm font-bold text-red-600">⚙️ 시스템 초기화</h3>
+        <div class="flex gap-2">
+          <button onclick="resetAllData()" class="w-full bg-red-600 text-white p-2 rounded text-xs font-bold hover:bg-red-700">전체 데이터 초기화</button>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- 🎁 추첨 연출 전용 모달 레이어 -->
+  <div id="raffle-modal" class="fixed inset-0 bg-black/70 hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl relative border-2 border-pink-400">
+      <h3 class="text-lg font-extrabold text-pink-600">🎁 깜짝 기프트 당첨자 추첨</h3>
+      
+      <div id="raffle-display-area" class="py-8 bg-pink-50 rounded-xl border border-pink-100 flex flex-col items-center justify-center min-h-[140px]">
+        <div id="raffle-status-text" class="text-sm font-bold text-gray-600">추첨 준비 완료</div>
+        <div id="raffle-winner-name" class="text-3xl font-black text-pink-600 mt-2 tracking-wide hidden">---</div>
+      </div>
+
+      <div class="text-xs text-gray-400" id="raffle-eligible-count">총 조건 충족 대상자: 0명</div>
+
+      <div class="flex gap-2 pt-2">
+        <button id="btn-start-raffle" onclick="startRaffleAnimation()" class="flex-1 bg-pink-600 text-white py-2.5 rounded-lg text-xs font-bold hover:bg-pink-700">
+          추첨 시작 🎲
+        </button>
+        <button onclick="closeRaffleModal()" class="bg-gray-200 text-gray-700 px-4 py-2.5 rounded-lg text-xs font-bold hover:bg-gray-300">
+          닫기
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://embed.typeform.com/next/embed.js"></script>
+
+  <script>
+    // 💡 두 시트(MasterList / Responses) 구조를 반영한 Google Apps Script 배포 URL 설정
+    const GOOGLE_SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbzmnLoZZxxc_V-BzKSNimUSY1jDiioQHmmnA4kV76qezL2UaE1PgLYfydiV4t5X9jjp/exec";
+
+    function sendToGoogleSheet(data) {
+      if (!GOOGLE_SHEETS_API_URL || GOOGLE_SHEETS_API_URL.includes("YOUR_DEPLOYED_SCRIPT_URL_HERE")) return;
+
+      fetch(GOOGLE_SHEETS_API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).catch(err => console.error("Sheet 전송 실패:", err));
+    }
+
+    let titleClickCount = 0;
+    let titleClickTimer = null;
+
+    const timetableData = [
+      { time: "15:00 ~ 15:05", title: "행사 Opening", speaker: "인재확보/운영팀", content: "식순소개 및 참석자 소개" },
+      { time: "15:05 ~ 15:35", title: "Key-note Speech", speaker: "Arizona State Univ. 안길준 교수", content: "AI시대의 도래와 Trust의 의미" },
+      { time: "15:35 ~ 15:50", title: "Break Time", speaker: "-", content: "휴식 시간" },
+      { time: "15:50 ~ 16:20", title: "Tech Speech", speaker: "CTO 이상엽 전무", content: "LG유플러스 테크전략 소개 및 Q&A" },
+      { time: "16:20 ~ 16:50", title: "Security Speech", speaker: "정보보안센터장 홍관희 전무", content: "LG유플러스 보안전략 소개 및 Q&A" },
+      { time: "16:50 ~ 17:05", title: "Break Time", speaker: "-", content: "휴식 시간" },
+      { time: "17:05 ~ 17:30", title: "HR Speech", speaker: "CHO 양효석 부사장", content: "LG유플러스 인사전략 소개 및 Q&A" },
+      { time: "17:30 ~ 17:50", title: "Internship PJT Showcase", speaker: "26년 인턴십 참가자", content: "26년 Global Summer Internship PJT 발표 및 참가후기" },
+      { time: "17:50 ~ 19:50", title: "Dinner", speaker: "-", content: "2026 US Fair 참석자 석식" },
+      { time: "19:50 ~ 20:00", title: "행사 Closing", speaker: "인재확보/운영팀", content: "행사 공식종료 및 자율 NW 안내" }
+    ];
+
+    const posterData = [
+      { id: 1, title: "포스터 1. Anti-Deepvoice", answers: ["anti-deepvoice", "antideepvoice", "안티딥보이스", "보이스피싱"] },
+      { id: 2, title: "포스터 2. 보이지 않는 데이터 속 숨은 답찾기", answers: ["데이터암호화", "동형암호", "경량화"] },
+      { id: 3, title: "포스터 3. Personal Intelligence 기반 Agent 개인화 기술", answers: ["personalintelligence", "개인화", "추천"] },
+      { id: 4, title: "포스터 4. Enterprise WorkAgent Engineering at LG U+", answers: ["workagent", "aiworkagent", "mcp", "sdlc"] },
+      { id: 5, title: "포스터 5. Mobile NPU로 굴리는 온디바이스 sLM", answers: ["온디바이스slm", "ondeviceslm", "npu"] }
+    ];
+
+    const defaultRegisteredAttendees = [
+      { name: "홍길동", birth: "980101", affiliation: "스탠포드대", job: "AI Researcher", checkedIn: false, seat: "A-12", interview: "14:00 (면접실 1)", networking: null },
+      { name: "김개발", birth: "000515", affiliation: "카네기멜론대", job: "Software Engineer", checkedIn: false, seat: "B-05", interview: "15:30 (면접실 2)", networking: null }
+    ];
+
+    let state = {
+      registeredAttendees: JSON.parse(localStorage.getItem('registeredAttendees')) || defaultRegisteredAttendees,
+      currentUser: JSON.parse(localStorage.getItem('currentUser')) || null,
+      completedPosters: JSON.parse(localStorage.getItem('completedPosters') || '[]'),
+      isSubscribed: localStorage.getItem('isSubscribed') === 'true',
+      questions: JSON.parse(localStorage.getItem('questions') || '[]'),
+      hasSurveyed: localStorage.getItem('hasSurveyed') === 'true',
+      isNoticeAgreed: localStorage.getItem('isNoticeAgreed') === 'true'
+    };
+
+    window.onload = function() {
+      renderTimetable();
+      loadAttendeesFromSheet(); // 구글 시트(MasterList) 데이터 연동 호출
+    };
+
+    // 💡 두 개로 분리된 시트 구조에 맞춘 명단 불러오기 함수
+    function loadAttendeesFromSheet() {
+      if (!GOOGLE_SHEETS_API_URL || GOOGLE_SHEETS_API_URL.includes("YOUR_DEPLOYED_SCRIPT_URL_HERE")) {
+        updateUI();
+        return;
+      }
+
+      fetch(GOOGLE_SHEETS_API_URL)
+        .then(res => res.json())
+        .then(data => {
+          if (data && Array.isArray(data.attendees)) {
+            state.registeredAttendees = data.attendees;
+            
+            // Responses 시트의 기록을 매핑하여 최신 상태 동기화
+            if (Array.isArray(data.responses)) {
+              data.responses.forEach(resp => {
+                const target = state.registeredAttendees.find(a => a.name === resp.name && String(a.birth) === String(resp.birth));
+                if (target) {
+                  if (resp.type === 'checkin') target.checkedIn = true;
+                  if (resp.type === 'networking') target.networking = (resp.detail === '참석');
+                }
+              });
+            }
+          }
+          updateUI();
+        })
+        .catch(err => {
+          console.error("구글 시트 연동 실패:", err);
+          updateUI();
+        });
+    }
+
+    function renderTimetable() {
+      const tbody = document.getElementById('timetable-tbody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      timetableData.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-pink-50/50 transition";
+        tr.innerHTML = `
+          <td class="p-2.5 font-bold text-pink-700 border-r whitespace-nowrap">${item.time}</td>
+          <td class="p-2.5 text-gray-800">
+            <div class="font-bold text-gray-900">${item.title} <span class="text-pink-600 font-normal">(${item.speaker})</span></div>
+            <div class="text-[11px] text-gray-500 mt-0.5">${item.content}</div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function setTabStyle(cardId, isCompleted) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      const styleCompleted = "bg-pink-50 border-pink-300 text-pink-700 hover:bg-pink-100";
+      const stylePending = "bg-gray-100 border-gray-200 text-gray-400 hover:bg-gray-200";
+
+      card.className = `p-4 border rounded-xl transition text-left space-y-1 ${isCompleted ? styleCompleted : stylePending}`;
+    }
+
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
+      document.getElementById(pageId).classList.remove('hidden');
+
+      const btnBack = document.getElementById('btn-back');
+      if (pageId === 'page-main') {
+        btnBack.classList.add('hidden');
+      } else {
+        btnBack.classList.remove('hidden');
+      }
+
+      if (pageId === 'page-admin') {
+        updateAdminUI();
+      } else {
+        updateUI();
+      }
+    }
+
+    function switchMissionSubTab(tab) {
+      const posterTab = document.getElementById('subtab-poster');
+      const subscribeTab = document.getElementById('subtab-subscribe');
+      const btn1 = document.getElementById('subtab-btn-1');
+      const btn2 = document.getElementById('subtab-btn-2');
+
+      if (tab === 'poster') {
+        posterTab.classList.remove('hidden');
+        subscribeTab.classList.add('hidden');
+        btn1.className = "flex-1 py-2 text-center border-b-2 border-pink-600 text-pink-600 font-bold";
+        btn2.className = "flex-1 py-2 text-center border-b-2 border-transparent text-gray-400 hover:text-gray-600 font-bold";
+      } else {
+        posterTab.classList.add('hidden');
+        subscribeTab.classList.remove('hidden');
+        btn1.className = "flex-1 py-2 text-center border-b-2 border-transparent text-gray-400 hover:text-gray-600 font-bold";
+        btn2.className = "flex-1 py-2 text-center border-b-2 border-pink-600 text-pink-600 font-bold";
+      }
+    }
+
+    function handleTitleClick() {
+      titleClickCount++;
+      clearTimeout(titleClickTimer);
+
+      if (titleClickCount >= 5) {
+        titleClickCount = 0;
+        const pwd = prompt("관리자 비밀번호를 입력하세요:");
+        if (pwd === "Codyd8080!") {
+          navigateTo('page-admin');
+        } else if (pwd !== null) {
+          alert("비밀번호가 올바르지 않습니다.");
+        }
+      } else {
+        titleClickTimer = setTimeout(() => {
+          titleClickCount = 0;
+        }, 1500);
+      }
+    }
+
+    function getCurrentUserData() {
+      if (!state.currentUser) return null;
+      return state.registeredAttendees.find(
+        a => a.name === state.currentUser.name && a.birth === state.currentUser.birth
+      );
+    }
+
+    function toggleNoticeAgreement() {
+      const chk = document.getElementById('chk-notice-agree');
+      state.isNoticeAgreed = chk.checked;
+      localStorage.setItem('isNoticeAgreed', state.isNoticeAgreed);
+      updateUI();
+    }
+
+    function toggleSubscribeButton() {
+      if (state.isSubscribed) return;
+
+      const chk = document.getElementById('chk-subscribe-agree');
+      const btn = document.getElementById('btn-complete-subscribe');
+
+      if (chk.checked) {
+        btn.disabled = false;
+        btn.className = "w-full bg-pink-600 text-white p-3 rounded-lg text-sm font-bold hover:bg-pink-700 cursor-pointer transition";
+      } else {
+        btn.disabled = true;
+        btn.className = "w-full bg-gray-300 text-gray-500 p-3 rounded-lg text-sm font-bold cursor-not-allowed transition";
+      }
+    }
+
+    function updateUI() {
+      const welcome = document.getElementById('main-user-welcome');
+      const statusCheckin = document.getElementById('main-status-checkin');
+      const checkinContainer = document.getElementById('checkin-container');
+      const checkinStatusArea = document.getElementById('checkin-status-area');
+      const checkinStatus = document.getElementById('checkin-status');
+      const assignedSeatNumber = document.getElementById('assigned-seat-number');
+      const videoSection = document.getElementById('welcome-video-section');
+
+      const userData = getCurrentUserData();
+      const isCheckedIn = !!(state.currentUser && userData);
+
+      if (!isCheckedIn) {
+        requestAnimationFrame(() => {
+          videoSection.classList.remove('hidden');
+        });
+      } else {
+        videoSection.classList.add('hidden');
+      }
+
+      if (isCheckedIn) {
+        welcome.innerText = `👋 환영합니다, ${state.currentUser.name}님!`;
+        statusCheckin.innerText = userData.seat ? `체크인 완료 (${userData.seat})` : '체크인 완료 ✅';
+        setTabStyle('card-checkin', true);
+        
+        checkinContainer.classList.add('hidden');
+        checkinStatusArea.classList.remove('hidden');
+        checkinStatus.innerHTML = `✅ <b>${state.currentUser.name}</b>님 체크인 완료 상태입니다.`;
+        assignedSeatNumber.innerText = userData.seat || '지정 좌석 없음';
+      } else {
+        welcome.innerText = '👋 안녕하세요! LG Uplus 2026 US Fair에 오신 것을 환영합니다.';
+        statusCheckin.innerText = '미체크인';
+        setTabStyle('card-checkin', false);
+
+        checkinContainer.classList.remove('hidden');
+        checkinStatusArea.classList.add('hidden');
+      }
+
+      const chkNotice = document.getElementById('chk-notice-agree');
+      if (chkNotice) chkNotice.checked = state.isNoticeAgreed;
+      
+      const statusDirection = document.getElementById('main-status-direction');
+      if (state.isNoticeAgreed) {
+        statusDirection.innerText = '유의사항 확인 완료 ✅';
+        setTabStyle('card-direction', true);
+      } else {
+        statusDirection.innerText = '유의사항 확인 대기';
+        setTabStyle('card-direction', false);
+      }
+
+      const interviewText = isCheckedIn ? (userData.interview ? userData.interview : '일정 정보 없음') : '체크인 필요';
+      document.getElementById('main-status-interview').innerText = interviewText;
+      setTabStyle('card-interview', isCheckedIn);
+
+      renderInterviewPage(userData);
+
+      const isPosterDone = state.completedPosters.length >= 4;
+      const isSubscribeDone = state.isSubscribed;
+      
+      let missionCompletedCount = 0;
+      if (isPosterDone) missionCompletedCount++;
+      if (isSubscribeDone) missionCompletedCount++;
+
+      const isAllMissionsDone = missionCompletedCount === 2;
+
+      document.getElementById('main-status-mission').innerText = isAllMissionsDone ? '미션 완료 🎉' : `진행중 (${missionCompletedCount}/2 완료)`;
+      setTabStyle('card-mission', isAllMissionsDone);
+
+      const banner = document.getElementById('mission-status-banner');
+      if (isAllMissionsDone) {
+        banner.className = "p-3 rounded-lg text-xs font-bold border bg-pink-50 border-pink-200 text-pink-700";
+        banner.innerHTML = `🎉 축하합니다! 모든 현장 미션(2/2)을 완수하셨습니다.`;
+      } else {
+        banner.className = "p-3 rounded-lg text-xs font-bold border bg-amber-50 border-amber-200 text-amber-700";
+        banner.innerHTML = `🎯 현장 미션 진행 상황: [포스터 ${isPosterDone ? '✅' : '❌'}] [채널구독 ${isSubscribeDone ? '✅' : '❌'}] (${missionCompletedCount}/2 완료)`;
+      }
+
+      const chkSubscribe = document.getElementById('chk-subscribe-agree');
+      const btnSubscribe = document.getElementById('btn-complete-subscribe');
+      if (state.isSubscribed) {
+        chkSubscribe.checked = true;
+        chkSubscribe.disabled = true;
+        btnSubscribe.innerText = "구독 인증 완료 ✅";
+        btnSubscribe.className = "w-full bg-gray-400 text-white p-3 rounded-lg text-sm font-bold cursor-not-allowed";
+        btnSubscribe.disabled = true;
+      } else {
+        toggleSubscribeButton();
+      }
+
+      const userQuestions = state.questions.length;
+      document.getElementById('main-status-qna').innerText = userQuestions > 0 ? `${userQuestions}개 질문 등록됨` : '질문 등록하기';
+      setTabStyle('card-qna', userQuestions > 0);
+
+      document.getElementById('main-status-survey').innerText = state.hasSurveyed ? '작성 완료 ✅' : '만족도 조사 작성';
+      setTabStyle('card-survey', state.hasSurveyed);
+
+      const surveyActionArea = document.getElementById('survey-action-area');
+      const surveyStatusBox = document.getElementById('survey-status-box');
+      if (state.hasSurveyed) {
+        surveyActionArea.classList.add('hidden');
+        surveyStatusBox.classList.remove('hidden');
+      } else {
+        surveyActionArea.classList.remove('hidden');
+        surveyStatusBox.classList.add('hidden');
+      }
+
+      const hasNWChosen = isCheckedIn && userData.networking !== null && userData.networking !== undefined;
+      const nwStatusText = isCheckedIn ? (userData.networking === true ? '참석 예정 ⭕' : (userData.networking === false ? '미참석 ❌' : '참석 여부 선택')) : '체크인 필요';
+      document.getElementById('main-status-networking').innerText = nwStatusText;
+      setTabStyle('card-networking', hasNWChosen);
+
+      const posterList = document.getElementById('poster-list');
+      posterList.innerHTML = '';
+      posterData.forEach(p => {
+        const isDone = state.completedPosters.includes(p.id);
+        const card = document.createElement('div');
+        card.className = 'p-3 bg-gray-50 border rounded-lg space-y-2';
+        card.innerHTML = `
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-sm text-gray-800">${p.title}</span>
+            ${isDone ? '<span class="text-xs font-bold text-pink-600 bg-pink-100 px-2 py-0.5 rounded">✅ 정답 완료</span>' : '<span class="text-xs text-gray-400">미완료</span>'}
+          </div>
+          ${isDone ? '<p class="text-xs text-gray-500">이미 정답을 맞춘 포스터입니다.</p>' : `
+            <div class="flex gap-2">
+              <input type="text" id="poster-input-${p.id}" class="border p-2 rounded text-xs flex-1" placeholder="정답 키워드 입력 (예: #키워드)">
+              <button onclick="checkPosterAnswer(${p.id})" class="bg-pink-600 text-white text-xs px-3 py-2 rounded hover:bg-pink-700 font-bold">제출</button>
+            </div>
+          `}
+        `;
+        posterList.appendChild(card);
+      });
+
+      const radios = document.getElementsByName('networking-choice');
+      radios.forEach(radio => {
+        if (userData && userData.networking !== null) {
+          if ((radio.value === 'true' && userData.networking === true) || (radio.value === 'false' && userData.networking === false)) {
+            radio.checked = true;
+          }
+        } else {
+          radio.checked = false;
+        }
+      });
+
+      const qnaList = document.getElementById('qna-list');
+      qnaList.innerHTML = '';
+      state.questions.forEach(q => {
+        const li = document.createElement('li');
+        li.className = 'p-2.5 bg-gray-50 border rounded-lg text-sm flex justify-between';
+        li.innerHTML = `<span>${q.text}</span><span class="text-xs text-gray-400">${q.time}</span>`;
+        qnaList.appendChild(li);
+      });
+    }
+
+    function renderInterviewPage(userData) {
+      const container = document.getElementById('interview-content');
+      if (!userData) {
+        container.innerHTML = `
+          <div class="p-4 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg text-sm space-y-2">
+            <p class="font-bold">⚠️ 체크인이 필요한 서비스입니다.</p>
+            <p class="text-xs">먼저 [참석자 체크인] 메뉴에서 성명과 생년월일을 확인해 주세요.</p>
+            <button onclick="navigateTo('page-checkin')" class="mt-2 bg-amber-600 text-white text-xs px-3 py-1.5 rounded font-bold">체크인하러 가기</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="bg-pink-50 border border-pink-200 p-5 rounded-xl space-y-3">
+          <div class="flex justify-between items-center border-b border-pink-100 pb-2">
+            <span class="text-xs font-bold text-pink-600">지원자</span>
+            <span class="text-sm font-bold text-gray-800">${userData.name} 님 (${userData.affiliation || '소속 없음'} / ${userData.job || '직무 없음'})</span>
+          </div>
+          <div class="space-y-1">
+            <p class="text-xs text-gray-500">배정된 인터뷰 일정</p>
+            <p class="text-lg font-bold text-pink-900">${userData.interview || '배정된 인터뷰 일정이 없습니다.'}</p>
+          </div>
+          <p class="text-xs text-gray-500 pt-2 border-t border-pink-100">면접 시작 10분 전까지 지정된 면접 장소 앞에서 대기해 주세요.</p>
+        </div>
+      `;
+    }
+
+    function checkPosterAnswer(id) {
+      const input = document.getElementById(`poster-input-${id}`);
+      if (!input) return;
+
+      const rawValue = input.value.trim();
+      const normalized = rawValue.replace(/[\s#]/g, '').toLowerCase();
+
+      if (!normalized) {
+        alert("키워드를 입력해 주세요.");
+        return;
+      }
+
+      const targetPoster = posterData.find(p => p.id === id);
+      const isCorrect = targetPoster.answers.some(ans => ans.toLowerCase() === normalized);
+
+      if (isCorrect) {
+        if (!state.completedPosters.includes(id)) {
+          state.completedPosters.push(id);
+          localStorage.setItem('completedPosters', JSON.stringify(state.completedPosters));
+          
+          sendToGoogleSheet({
+            type: "mission_poster",
+            name: state.currentUser ? state.currentUser.name : "미체크인",
+            birth: state.currentUser ? state.currentUser.birth : "-",
+            detail: `포스터 ${id} 정답 제출`
+          });
+        }
+        alert("정답입니다! 🎉");
+        updateUI();
+      } else {
+        alert("정답이 아닙니다. 포스터의 핵심 키워드를 다시 확인해 보세요!");
+      }
+    }
+
+    function completeSubscribeMission() {
+      const chk = document.getElementById('chk-subscribe-agree');
+      if (!chk.checked) {
+        alert("구독 확인 체크박스에 체크해 주세요.");
+        return;
+      }
+
+      state.isSubscribed = true;
+      localStorage.setItem('isSubscribed', 'true');
+
+      sendToGoogleSheet({
+        type: "mission_subscribe",
+        name: state.currentUser ? state.currentUser.name : "미체크인",
+        birth: state.currentUser ? state.currentUser.birth : "-",
+        detail: "채널 구독 인증 완료"
+      });
+
+      alert("채널 구독 미션 인증이 완료되었습니다! 🎉");
+      updateUI();
+    }
+
+    function handleCheckin() {
+      const name = document.getElementById('checkin-name').value.trim();
+      const birth = document.getElementById('checkin-birth').value.trim();
+
+      if (!name || !birth) {
+        alert("이름과 생년월일 6자리를 모두 입력해 주세요.");
+        return;
+      }
+
+      const targetIndex = state.registeredAttendees.findIndex(a => a.name === name && a.birth === birth);
+
+      if (targetIndex !== -1) {
+        if (state.registeredAttendees[targetIndex].checkedIn) {
+          alert("이미 체크인이 완료된 명단입니다.");
+          return;
+        }
+
+        state.registeredAttendees[targetIndex].checkedIn = true;
+        state.currentUser = { name: name, birth: birth };
+
+        localStorage.setItem('registeredAttendees', JSON.stringify(state.registeredAttendees));
+        localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+
+        sendToGoogleSheet({
+          type: "checkin",
+          name: name,
+          birth: birth,
+          detail: "체크인 완료"
+        });
+
+        alert(`${name}님, 체크인이 완료되었습니다!`);
+        updateUI();
+      } else {
+        alert("사전 등록된 명단과 일치하지 않습니다.");
+      }
+    }
+
+    function addQuestion() {
+      const input = document.getElementById('qna-input');
+      if (!input.value.trim()) return;
+      const newQ = {
+        text: input.value,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      state.questions.unshift(newQ);
+      localStorage.setItem('questions', JSON.stringify(state.questions));
+
+      sendToGoogleSheet({
+        type: "qna",
+        name: state.currentUser ? state.currentUser.name : "익명",
+        birth: state.currentUser ? state.currentUser.birth : "-",
+        detail: input.value
+      });
+
+      input.value = '';
+      updateUI();
+    }
+
+    function setNetworkingOption(value) {
+      if (!state.currentUser) {
+        alert("체크인을 먼저 진행해 주세요.");
+        return;
+      }
+
+      const userIndex = state.registeredAttendees.findIndex(
+        a => a.name === state.currentUser.name && a.birth === state.currentUser.birth
+      );
+
+      if (userIndex !== -1) {
+        state.registeredAttendees[userIndex].networking = value;
+        localStorage.setItem('registeredAttendees', JSON.stringify(state.registeredAttendees));
+
+        sendToGoogleSheet({
+          type: "networking",
+          name: state.currentUser.name,
+          birth: state.currentUser.birth,
+          detail: value ? "참석" : "미참석"
+        });
+
+        alert("After NW 참석 여부가 정상적으로 제출되었습니다.");
+        updateUI();
+      }
+    }
+
+    function completeSurvey() {
+      if (confirm("설문 작성을 정말 완료하셨습니까?")) {
+        state.hasSurveyed = true;
+        localStorage.setItem('hasSurveyed', 'true');
+
+        sendToGoogleSheet({
+          type: "survey",
+          name: state.currentUser ? state.currentUser.name : "익명",
+          birth: state.currentUser ? state.currentUser.birth : "-",
+          detail: "설문 작성 완료 인증"
+        });
+
+        alert("설문 참여 확인이 완료되었습니다. 감사합니다!");
+        updateUI();
+      }
+    }
+
+    function updateAdminUI() {
+      const checkedInCount = state.registeredAttendees.filter(a => a.checkedIn).length;
+      const nwYesCount = state.registeredAttendees.filter(a => a.networking === true).length;
+      const nwNoCount = state.registeredAttendees.filter(a => a.networking === false).length;
+      const nwPendingCount = state.registeredAttendees.filter(a => a.networking === null || a.networking === undefined).length;
+
+      document.getElementById('admin-total-registered').innerText = state.registeredAttendees.length + "명";
+      document.getElementById('admin-checkedin-count').innerText = checkedInCount + "명";
+      document.getElementById('admin-networking-status').innerText = `참석 ${nwYesCount}명 / 미참석 ${nwNoCount}명 (미응답 ${nwPendingCount}명)`;
+
+      const tbody = document.getElementById('admin-attendee-tbody');
+      tbody.innerHTML = state.registeredAttendees.length === 0 ? '<tr><td colspan="5" class="text-center py-2 text-gray-400">등록된 명단이 없습니다.</td></tr>' : '';
+      
+      state.registeredAttendees.forEach((attendee, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = "border-b";
+        tr.innerHTML = `
+          <td class="py-1 font-bold">${attendee.name}</td>
+          <td class="py-1 text-gray-500">${attendee.birth}</td>
+          <td class="py-1 text-gray-700">${attendee.affiliation || '-'}<br><span class="text-[10px] text-gray-400">${attendee.job || '-'}</span></td>
+          <td class="py-1 text-gray-700">${attendee.seat || '-'}<br><span class="text-[10px] text-gray-400">${attendee.interview || '-'}</span></td>
+          <td class="py-1 text-right">
+            <button onclick="deleteRegisteredAttendee(${idx})" class="text-red-500 text-xs hover:underline">삭제</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function registerAttendee() {
+      const name = document.getElementById('reg-name').value.trim();
+      const birth = document.getElementById('reg-birth').value.trim();
+      const affiliation = document.getElementById('reg-affiliation').value.trim();
+      const job = document.getElementById('reg-job').value.trim();
+      const seat = document.getElementById('reg-seat').value.trim();
+      const interview = document.getElementById('reg-interview').value.trim();
+
+      if (!name || birth.length !== 6) {
+        alert("이름과 올바른 생년월일 6자리를 입력해 주세요.");
+        return;
+      }
+
+      state.registeredAttendees.push({
+        name: name,
+        birth: birth,
+        affiliation: affiliation || '',
+        job: job || '',
+        checkedIn: false,
+        seat: seat || '',
+        interview: interview || '',
+        networking: null
+      });
+
+      localStorage.setItem('registeredAttendees', JSON.stringify(state.registeredAttendees));
+      document.getElementById('reg-name').value = '';
+      document.getElementById('reg-birth').value = '';
+      document.getElementById('reg-affiliation').value = '';
+      document.getElementById('reg-job').value = '';
+      document.getElementById('reg-seat').value = '';
+      document.getElementById('reg-interview').value = '';
+      updateAdminUI();
+    }
+
+    function deleteRegisteredAttendee(index) {
+      state.registeredAttendees.splice(index, 1);
+      localStorage.setItem('registeredAttendees', JSON.stringify(state.registeredAttendees));
+      updateAdminUI();
+    }
+
+    function importCSVAttendees(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const lines = e.target.result.split(/\r\n|\n/);
+        let addedCount = 0;
+        lines.forEach((line, index) => {
+          if (!line.trim()) return;
+          const cols = line.split(',').map(col => col.replace(/"/g, '').trim());
+          if (index === 0 && (cols[0].includes('이름') || cols[0].toLowerCase().includes('name'))) return;
+          if (cols[0] && cols[1] && cols[1].length === 6) {
+            if (!state.registeredAttendees.some(a => a.name === cols[0] && a.birth === cols[1])) {
+              state.registeredAttendees.push({
+                name: cols[0],
+                birth: cols[1],
+                affiliation: cols[2] || '',
+                job: cols[3] || '',
+                checkedIn: false,
+                seat: cols[4] || '',
+                interview: cols[5] || '',
+                networking: null
+              });
+              addedCount++;
+            }
+          }
+        });
+        localStorage.setItem('registeredAttendees', JSON.stringify(state.registeredAttendees));
+        alert(`${addedCount}명 등록 완료`);
+        updateAdminUI();
+      };
+      reader.readAsText(file, "UTF-8");
+    }
+
+    function downloadCSVSample() {
+      const csvContent = "\uFEFF이름,생년월일,소속,직무,좌석번호,인터뷰일정\n이순신,950301,스탠포드대,AI Researcher,A-01,14:00 (면접실 1)\n강감찬,011225,카네기멜론대,Software Engineer,B-03,15:30 (면접실 2)\n";
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "참석자명단_양식.csv";
+      link.click();
+    }
+
+    function exportCSV(type) {
+      let csvContent = "\uFEFF";
+      let fileName = "";
+      if (type === 'attendees') {
+        csvContent += "이름,생년월일,소속,직무,체크인여부,좌석번호,인터뷰일정,After NW 참석여부\n";
+        state.registeredAttendees.forEach(a => {
+          let nwText = '미응답';
+          if (a.networking === true) nwText = '참석';
+          if (a.networking === false) nwText = '미참석';
+
+          csvContent += `"${a.name}","${a.birth}","${a.affiliation || ''}","${a.job || ''}","${a.checkedIn ? '완료' : '미완료'}","${a.seat || ''}","${a.interview || ''}","${nwText}"\n`;
+        });
+        fileName = "참석자명단_체크인현황.csv";
+      } else if (type === 'qna') {
+        csvContent += "등록시간,질문내용\n";
+        state.questions.forEach(q => { csvContent += `"${q.time}","${q.text.replace(/"/g, '""')}"\n`; });
+        fileName = "실시간_QA_목록.csv";
+      }
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+    }
+
+    function resetAllData() {
+      if (confirm("모든 데이터를 초기화하시겠습니까?")) {
+        localStorage.clear();
+        state = { registeredAttendees: defaultRegisteredAttendees, currentUser: null, completedPosters: [], isSubscribed: false, questions: [], hasSurveyed: false, isNoticeAgreed: false };
+        alert('초기화되었습니다.');
+        updateAdminUI();
+      }
+    }
+
+    let eligibleCandidates = [];
+    let raffleTimer = null;
+
+    function openRaffleModal() {
+      const isPosterDone = state.completedPosters.length >= 4;
+      const isSubscribeDone = state.isSubscribed;
+      const isSurveyDone = state.hasSurveyed;
+
+      const isAllConditionsMet = isPosterDone && isSubscribeDone && isSurveyDone;
+
+      eligibleCandidates = state.registeredAttendees.filter(a => {
+        if (!a.checkedIn) return false;
+        return isAllConditionsMet;
+      });
+
+      const modal = document.getElementById('raffle-modal');
+      const countText = document.getElementById('raffle-eligible-count');
+      const statusText = document.getElementById('raffle-status-text');
+      const winnerName = document.getElementById('raffle-winner-name');
+      const btnStart = document.getElementById('btn-start-raffle');
+
+      countText.innerText = `총 조건 충족 대상자: ${eligibleCandidates.length}명`;
+      statusText.innerText = eligibleCandidates.length > 0 
+        ? "추첨 버튼을 눌러주세요!" 
+        : "⚠️ 미션 2개와 설문조사를 모두 완료한 참석자가 없습니다.";
+
+      winnerName.classList.add('hidden');
+      winnerName.innerText = "---";
+      btnStart.disabled = eligibleCandidates.length === 0;
+      btnStart.className = eligibleCandidates.length > 0 
+        ? "flex-1 bg-pink-600 text-white py-2.5 rounded-lg text-xs font-bold hover:bg-pink-700 cursor-pointer"
+        : "flex-1 bg-gray-300 text-gray-500 py-2.5 rounded-lg text-xs font-bold cursor-not-allowed";
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeRaffleModal() {
+      if (raffleTimer) clearInterval(raffleTimer);
+      document.getElementById('raffle-modal').classList.add('hidden');
+    }
+
+    function startRaffleAnimation() {
+      if (eligibleCandidates.length === 0) return;
+
+      const statusText = document.getElementById('raffle-status-text');
+      const winnerName = document.getElementById('raffle-winner-name');
+      const btnStart = document.getElementById('btn-start-raffle');
+
+      btnStart.disabled = true;
+      btnStart.classList.add('opacity-50', 'cursor-not-allowed');
+      winnerName.classList.remove('hidden');
+      statusText.innerText = "🎉 두구두구... 추첨 중!";
+
+      let speed = 50; 
+      let counter = 0;
+      const maxCycles = 30; 
+
+      raffleTimer = setInterval(() => {
+        const randomTempUser = eligibleCandidates[Math.floor(Math.random() * eligibleCandidates.length)];
+        winnerName.innerText = randomTempUser.name;
+        counter++;
+
+        if (counter >= maxCycles) {
+          clearInterval(raffleTimer);
+          
+          const finalWinner = eligibleCandidates[Math.floor(Math.random() * eligibleCandidates.length)];
+          winnerName.innerText = `🎊 ${finalWinner.name} 님`;
+          statusText.innerText = "🏆 축하합니다! 당첨되었습니다!";
+
+          sendToGoogleSheet({
+            type: "raffle_winner",
+            name: finalWinner.name,
+            birth: finalWinner.birth,
+            detail: "현장 미션+설문 완수 기프트 당첨"
+          });
+
+          btnStart.disabled = false;
+          btnStart.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+      }, speed);
+    }
+  </script>
+</body>
+</html>
